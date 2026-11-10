@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aryan Jain — Engineer</title>
+    <meta
+      name="description"
+      content="Aryan Jain, ECE at IIT Roorkee. FPGA and CPU design, GPU compute, real-time systems, ML and game engines."
+    />
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Decide before first paint whether the swarm builds the page, so nothing flashes.
+      (function () {
+        var reduce = false, off = false;
+        try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+        try { off = localStorage.getItem('swarm') === 'off'; } catch (e) {}
+        if (!reduce && !off) document.documentElement.classList.add('sw-on');
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

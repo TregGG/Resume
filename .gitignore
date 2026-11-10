@@ -1,0 +1,5 @@
+node_modules
+dist
+tsconfig.tsbuildinfo
+# personal notes with roll number and local paths; keep out of the repo
+projects_dossier.md

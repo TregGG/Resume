@@ -1,0 +1,112 @@
+/* ---------- swarm layer & cursors ---------- */
+.sw-root {
+  position: relative;
+  overflow: clip; /* cursors that fly off-screen never cause page scroll */
+}
+.sw-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: 60;
+  pointer-events: none;
+}
+.sw-agent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--c) 70%, transparent));
+}
+.sw-agent .g {
+  position: absolute;
+  display: none;
+}
+.sw-agent[data-glyph='arrow'] .g-arrow {
+  display: block;
+  left: -1px;
+  top: -1px;
+  transform: rotate(var(--tilt, 0deg));
+  transform-origin: 1px 1px;
+}
+.sw-agent[data-glyph='cross'] .g-cross { display: block; left: -10.5px; top: -10.5px; }
+.sw-agent[data-glyph='ibeam'] .g-ibeam { display: block; left: -6px; top: -10px; }
+.sw-agent[data-glyph='pen'] .g-pen { display: block; left: -1px; top: -19px; }
+.sw-tag {
+  position: absolute;
+  left: 13px;
+  top: 15px;
+  padding: 1px 6px 1px 5px;
+  background: var(--c);
+  color: #05050a;
+  font: 700 10px/14px 'JetBrains Mono', ui-monospace, monospace;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  clip-path: polygon(0 0, 100% 0, 100% 60%, calc(100% - 5px) 100%, 0 100%);
+}
+
+/* draft rectangle dragged out by a crosshair cursor */
+.sw-draft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px dashed var(--c);
+  background: color-mix(in srgb, var(--c) 7%, transparent);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--c) 35%, transparent);
+  transition: opacity 0.4s ease;
+}
+.sw-draft-out { opacity: 0; }
+.sw-badge {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 4px;
+  padding: 0 5px;
+  background: var(--c);
+  color: #05050a;
+  font: 700 10px/15px 'JetBrains Mono', ui-monospace, monospace;
+  white-space: nowrap;
+}
+
+/* ---------- buildable elements (hidden only while the swarm is on) ---------- */
+.sw-t { position: relative; }
+span.sw-t { display: inline-block; }
+.sw-typed { display: none; }
+.sw-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 1px;
+  vertical-align: -0.12em;
+  background: var(--c, #00f0ff);
+  box-shadow: 0 0 6px var(--c, #00f0ff);
+  animation: sw-blink 0.8s steps(1) infinite;
+}
+@keyframes sw-blink { 50% { opacity: 0; } }
+
+html.sw-on .sw-t:not(.sw-built) > .sw-ghost { visibility: hidden; }
+html.sw-on .sw-t.sw-typing > .sw-typed {
+  display: block;
+  position: absolute;
+  inset: 0;
+  padding: inherit; /* typed copy wraps inside the same content box as the ghost */
+}
+
+html.sw-on [data-sw='box']:not(.sw-built),
+html.sw-on [data-sw='chip']:not(.sw-built) { opacity: 0; }
+html.sw-on [data-sw='box'],
+html.sw-on [data-sw='chip'] { transition: opacity 0.25s ease; }
+html.sw-on [data-sw='box'].sw-built { animation: sw-flash 0.6s ease-out; }
+
+html.sw-on [data-sw='line'] { transform-origin: left center; }
+html.sw-on [data-sw='line']:not(.sw-built) { transform: scaleX(var(--sw-p, 0)); }
+
+@keyframes sw-flash {
+  0% { filter: brightness(1.8) drop-shadow(0 0 10px rgba(0, 240, 255, 0.6)); }
+  100% { filter: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sw-layer { display: none; }
+}
