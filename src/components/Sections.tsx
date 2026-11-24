@@ -92,7 +92,7 @@ export function Hero() {
             <p className="cmd"><T>cat focus.txt</T></p>
             <T as="p" className="out">logic gates → cpus → gpu compute</T>
             <p className="cmd"><T>uptime</T></p>
-            <T as="p" className="out cyan">21 projects · 5 domains</T>
+            <T as="p" className="out cyan">28 projects · 5 domains</T>
           </div>
         </div>
       </div>
@@ -205,7 +205,7 @@ export function Projects() {
         <SectionHead
           num="03"
           title="Featured builds"
-          lead="Five projects across hardware, graphics, systems, ML and engines."
+          lead="Six projects across hardware, graphics, systems, ML and engines."
         />
         <div className="grid projects">
           {heroProjects.map((p, i) => (

@@ -60,11 +60,11 @@ export const skills: { group: string; items: string[] }[] = [
   },
   {
     group: 'ML & Vision',
-    items: ['PyTorch', 'CUDA', 'OpenCV', 'MediaPipe', 'scikit-learn', 'NumPy / SciPy'],
+    items: ['PyTorch', 'CUDA', 'OpenCV', 'MediaPipe', 'YOLO', 'scikit-learn', 'NumPy / SciPy'],
   },
   {
     group: 'Games',
-    items: ['Godot / GDScript', 'ECS design', 'Embedded Python'],
+    items: ['Unity / C#', 'AR Foundation', 'Godot / GDScript', 'ECS design', 'Embedded Python'],
   },
 ];
 
@@ -76,6 +76,11 @@ export const education = {
 };
 
 export const activities = [
+  {
+    title: 'Head of AR/VR',
+    org: 'ArIES, IIT Roorkee',
+    years: '2026 — Present',
+  },
   {
     title: 'Volunteer, Women Empowerment',
     org: 'NSS IIT Roorkee',

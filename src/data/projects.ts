@@ -43,6 +43,25 @@ export const heroProjects: HeroProject[] = [
     repo: gh('Swirlynight'),
   },
   {
+    id: 'shawnty',
+    title: 'ShawntyEngine',
+    category: 'Games',
+    blurb: 'A 2D multiplayer game engine with a strict split between game logic, physics and OpenGL rendering.',
+    metrics: [
+      { value: 'ECS', label: 'architecture' },
+      { value: 'Python', label: 'gameplay scripting' },
+      { value: 'Hot', label: 'reload editor' },
+    ],
+    bullets: [
+      'Entity-Component System composing Transform, Rigidbody and Sprite components.',
+      'Embedded Python scripting through PyBind11, with a quadtree grid for collision detection.',
+      'React + FastAPI visual web editor: drag-and-drop scenes, assets, hot reload into the running game.',
+      'Client-server multiplayer with soft desync reconciliation and server tick offset compensation.',
+    ],
+    stack: ['C++17', 'OpenGL', 'PyBind11', 'React', 'FastAPI', 'WebSockets'],
+    repo: gh('ShawntyEngine'),
+  },
+  {
     id: 'gpuga',
     title: 'FPGA GPU & VGA Controller',
     codename: 'GPUGA',
@@ -83,6 +102,23 @@ export const heroProjects: HeroProject[] = [
     repo: gh('ERICK'),
   },
   {
+    id: 'rollback',
+    title: 'Deterministic Rollback NetCode',
+    category: 'Systems',
+    blurb: 'A library that keeps real-time multiplayer feeling instant by predicting remote inputs instead of waiting for them.',
+    metrics: [
+      { value: 'Predict', label: 'remote inputs' },
+      { value: 'Verify', label: 'against the server' },
+      { value: 'Sync', label: 'shared state' },
+    ],
+    bullets: [
+      'Optimistic execution predicts remote inputs and advances the local simulation, masking round-trip delay.',
+      'Continuous state validation checks each prediction against authoritative server packets.',
+      'Validation runs without halting the ongoing simulation.',
+    ],
+    stack: ['Netcode', 'Client-server', 'Prediction', 'State sync'],
+  },
+  {
     id: 'eeg',
     title: 'Driver Drowsiness from EEG',
     category: 'ML / Vision',
@@ -100,25 +136,6 @@ export const heroProjects: HeroProject[] = [
     ],
     stack: ['PyTorch', 'FastAPI', 'WebSockets', 'SciPy', 'Chart.js'],
   },
-  {
-    id: 'shawnty',
-    title: 'ShawntyEngine',
-    category: 'Games',
-    blurb: 'A 2D multiplayer game engine with a strict split between game logic, physics and OpenGL rendering.',
-    metrics: [
-      { value: 'ECS', label: 'architecture' },
-      { value: 'Python', label: 'gameplay scripting' },
-      { value: 'Hot', label: 'reload editor' },
-    ],
-    bullets: [
-      'Entity-Component System composing Transform, Rigidbody and Sprite components.',
-      'Embedded Python scripting for gameplay without recompiling the C++ core.',
-      'React + FastAPI visual web editor: drag-and-drop scenes, assets, hot reload into the running game.',
-      'Client-server state replication built into the engine foundation.',
-    ],
-    stack: ['C++17', 'OpenGL', 'Python', 'React', 'FastAPI', 'WebSockets'],
-    repo: gh('ShawntyEngine'),
-  },
 ];
 
 export const archive: { category: Category; projects: MinorProject[] }[] = [
@@ -129,6 +146,16 @@ export const archive: { category: Category; projects: MinorProject[] }[] = [
         title: 'RV32I Single-Cycle Core',
         text: 'Full RV32I (R/I/S/B/U/J) in Verilog: ALU, decoder, immediate gen, 32×32 register file, memory bus. Python assembler and prime-number testbenches.',
         stack: ['Verilog', 'iverilog', 'Python'],
+      },
+      {
+        title: 'RV32I in Logisim',
+        text: 'A single-cycle RV32I processor built as a modular schematic, with batches of assembly tests used to find and fix corner cases in memory and register writes.',
+        stack: ['Logisim', 'RISC-V', 'Assembly'],
+      },
+      {
+        title: '8-bit SAP-1 on Breadboards',
+        text: 'A working 8-bit computer wired from discrete ICs: ALU, instruction register and RAM over a shared bus.',
+        stack: ['Discrete ICs', 'Breadboard', 'Debugging'],
       },
       {
         title: '16-bit Computer, OS & Tetris',
@@ -142,7 +169,7 @@ export const archive: { category: Category; projects: MinorProject[] }[] = [
       },
       {
         title: 'RF & Digital Coursework',
-        text: 'PCB high-frequency signal receiver (ECC-203), CST Studio RF antenna simulation, and a 24-hour digital stopwatch state machine.',
+        text: 'A 2.4 GHz receiver with an ASK envelope-detector demodulator, RF simulation in CST Studio, and a digital stopwatch with time setting and speed-up.',
         stack: ['PCB', 'CST Studio', 'Digital logic'],
       },
     ],
@@ -164,7 +191,7 @@ export const archive: { category: Category; projects: MinorProject[] }[] = [
       },
       {
         title: 'PixelPaint',
-        text: '2D sprite renderer with modular camera, texture management and lighting shaders.',
+        text: 'Hardware-accelerated 2D sprite renderer with modular camera, texture management and lighting shaders.',
         stack: ['C++', 'OpenGL'],
       },
       {
@@ -175,8 +202,23 @@ export const archive: { category: Category; projects: MinorProject[] }[] = [
     ],
   },
   {
+    category: 'Systems',
+    projects: [
+      {
+        title: 'AR-Reloaded',
+        text: 'A platform for making interactive AR books: a backend that packages content and a Unity mobile client that tracks pages and loads it over the air.',
+        stack: ['Unity', 'C#', 'AR Foundation'],
+      },
+    ],
+  },
+  {
     category: 'ML / Vision',
     projects: [
+      {
+        title: 'E-Waste Sorting Arm',
+        text: 'A 4-DOF robotic arm with camera sensing that uses YOLO detection to pick and place valuable e-waste components.',
+        stack: ['YOLO', 'Robotics', 'Computer vision'],
+      },
       {
         title: 'Aerothon Drone Vision',
         text: 'QR target registration and drop-zone matching on a Jetson Nano, emitting normalized ΔX/ΔY offsets for the flight controller PID loop.',
@@ -197,6 +239,16 @@ export const archive: { category: Category; projects: MinorProject[] }[] = [
   {
     category: 'Games',
     projects: [
+      {
+        title: 'Hand-Gesture Survival Game',
+        text: 'A hands-free 2D survival game: MediaPipe hand tracking in Python streams gestures to the game over WebSockets.',
+        stack: ['Python', 'MediaPipe', 'WebSockets'],
+      },
+      {
+        title: '2D Roguelike Co-op Survival',
+        text: 'A 2D co-op roguelike survival game, made with ArIES at IIT Roorkee.',
+        stack: ['2D', 'Co-op'],
+      },
       {
         title: 'cppataria',
         text: '2D multiplayer desktop game in modern C++ on the Walnut framework.',
