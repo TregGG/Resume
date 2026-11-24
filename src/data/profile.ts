@@ -5,7 +5,7 @@ export const profile = {
   role: 'Electronics & Communication Engineering · IIT Roorkee · Class of 2028',
   summary:
     'I build systems close to the metal: CPUs and VGA controllers on FPGAs, particle physics that never leaves the GPU, real-time systems that move real people, and the engines and tools on top of them.',
-  emails: ['prsaryanjain@gmail.com', 'aryan_j@ece.iitr.ac.in'],
+  emails: ['kkaryanjain@gmail.com', 'aryan_j@ece.iitr.ac.in'],
   links: [
     { label: 'GitHub', value: 'TregGG', href: 'https://github.com/TregGG' },
     { label: 'Codeforces', value: 'tregg', href: 'https://codeforces.com/profile/tregg' },
